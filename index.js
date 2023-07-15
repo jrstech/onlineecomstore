@@ -1,6 +1,6 @@
 const express = require('express');
-const connectDB = require('./databse/config');
-const User = require('./databse/User');
+const connectDB = require('./database/config');
+const User = require('./database/User');
 const cors = require('cors');                       // cores api problem 
 const app = express();
 const PORT = 5000;
