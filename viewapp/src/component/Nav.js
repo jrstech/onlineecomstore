@@ -10,42 +10,71 @@ const Nav = () => {
   };
   return (
     <div className="d-flex">
-     
       {auth ? (
         <ul className="navlink d-flex">
-          <> <img className="logo" src="https://franchiseindia.s3.ap-south-1.amazonaws.com/uploads/news/fi/mart1000x562-59b99f247b.jpg"  alt="loading"/></>
+          <>
+            {" "}
+            <img
+              className="logo"
+              src="https://static.vecteezy.com/system/resources/previews/009/027/322/original/jrs-logo-jrs-letter-jrs-letter-logo-design-initials-jrs-logo-linked-with-circle-and-uppercase-monogram-logo-jrs-typography-for-technology-business-and-real-estate-brand-vector.jpg"
+              alt="loading"
+            />
+          </>
+
           <li>
-            <NavLink to="">Home </NavLink>
+            <NavLink className="navlinkstyle mx-2" to="">
+              Home{" "}
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/productlist"> Product listing</NavLink>
-          </li>
-          <li>
-            <NavLink to="/addproductlisting"> Add Product</NavLink>
-          </li>
-          <li>
-            <NavLink to="/update"> Update Product</NavLink>
-          </li>
-          <li>
-            <NavLink to="/profile"> Profile Component</NavLink>
-          </li>
-          <li>
-            <NavLink onClick={logoutUser} to="/signup">
+            <NavLink className="navlinkstyle" to="/productlist">
               {" "}
-              Logout
-              &nbsp;
-              ( {JSON.parse(auth).name} )
-             
+              Product listing
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="navlinkstyle" to="/addproductlisting">
+              {" "}
+              Add Product
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="navlinkstyle" to="/update">
+              {" "}
+              Update Product
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="navlinkstyle" to="/profile">
+              {" "}
+              Profile Component
+            </NavLink>
+          </li>
+          <li className="logoutstyle">
+            <NavLink
+              className="navlinkstyle "
+              style={{ justifyContent: "end" }}
+              onClick={logoutUser}
+              to="/signup"
+            >
+              {" "}
+              User: &nbsp; {JSON.parse(auth).name} &nbsp;  Logout 
             </NavLink>{" "}
           </li>
         </ul>
       ) : (
         <ul className="navlink textset">
           <li className="">
-            <NavLink to="/signup"> Sign Up</NavLink>
+            <NavLink className="navlinkstyle" to="/signup">
+              {" "}
+              Sign Up
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/login"> Login</NavLink>
+            <NavLink className="navlinkstyle" to="/login">
+              {" "}
+              Login
+            </NavLink>
           </li>
         </ul>
       )}

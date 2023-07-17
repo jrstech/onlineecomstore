@@ -15,8 +15,8 @@ function App() {
       <BrowserRouter>
         <Nav />
         <div >
-          <h3 className="headername d-flex"  > E-Commorce Dashbord
-          <Input className="w-50 m-2" type="text" placeholder="Search" />
+          <h3 className="headername d-flex"  >Store Dashbord
+          <Input className="w-50 mx-4 m-1" type="text" placeholder="Search" />
         </h3>
        
 
