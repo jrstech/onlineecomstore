@@ -54,7 +54,12 @@ app.get('/productlist', async (req, resp) => {
  }
 })
 
+// deleted api =============
 
+app.delete ("/product/:id", async (req, resp) => {
+  const result = await Product.deleteOne({_id:req.params.id})
+  resp.send(result)
+})
 //search by name api
 
 app.get("/name", async (req, resp) => {

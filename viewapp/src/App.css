@@ -1,6 +1,6 @@
 .navlink {
   display: flex;
-  background-color: rgb(20, 34, 40);
+  background-color: rgb(43, 190, 213);
   width: 100%;
   text-decoration: none;
   color: red;
@@ -8,9 +8,9 @@
  }
  li{
   display: flex;
-  background-color: rgb(20, 34, 40);
-  padding: 4px;
-  margin: 7px;  
+  background-color: rgb(207, 212, 56);
+  padding: 2px;
+  margin: 10px;  
   font-size: 1.1rem;
   text-decoration: none;
   border-bottom: none;
@@ -20,7 +20,7 @@
   bottom: 0;
   text-align: center;
   width: 100%;
-  background-color: skyblue;
+  background-color: rgb(43, 190, 213);
 
  }
  .inputbox{
@@ -54,8 +54,14 @@
  .pruductlist tr th {
   justify-content: center;
   text-align: center;
-  border: 3px solid red;
+  border: 3px solid rgb(255, 89, 0);
   padding: 5px;
   
   background-color: aqua;
+ }
+
+ .headername{
+  background-color: chocolate;
+  color: #fff;
+  font-size: 2rem;
  }
