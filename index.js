@@ -20,7 +20,7 @@ app.post("/register", async (req, resp) => {
   resp.send(result);
 });
 
-//  login api development here================================
+//  login api development here fetch from databse ================================
 app.post("/login", async (req, resp) => {
 console.log(req.body)
 if(req.body.password && req.body.email){
@@ -37,11 +37,21 @@ else {
   
 });
 
-// product linsting api ==============
+// product linsting api ========================
 app.post("/addproductlisting", async (req, resp) => {
 let product = new Product(req.body);
 let result = await product.save();
 resp.send(result)
+})
+
+// product data fetch from databse ===================
+app.get('/productlist', async (req, resp) => {
+  let products = await Product.find();
+ if(products.length>0){
+  resp.send(products)
+ }else{
+  resp.send({result:"No Products Found"})
+ }
 })
 
 
