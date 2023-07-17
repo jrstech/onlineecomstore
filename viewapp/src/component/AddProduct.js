@@ -1,30 +1,35 @@
 import React, { Fragment, useState } from "react";
 import { Button, Col, Input, Row } from "reactstrap";
+import { useNavigate } from "react-router-dom"; 
 
 const AddProduct = () => {
+
+
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [company, setCompany] = useState("");
   const [error, setError] = useState(false);
+  const naviaget = useNavigate();
+
  const addProduct = async () => {
 if(!name || !price || !category || !company)
 {
     setError(true);
     return false;
 }
-console.log(name,price, category, company )
+console.log(name, price, category, company )
 let userId = JSON.parse(localStorage.getItem("user"))._id;
 console.log(userId);
 let result = await fetch("http://localhost:5000/addproductlisting",{
     method: "post",
     body: JSON.stringify({name, price, category, company, userId}),
-    headers: {
-        'Content-Type': 'application/json'
-    }
+    headers: { 'Content-Type': 'application/json'   }
 });
 result = await result.json();
-console.log(result);
+alert("Product add into list ");
+naviaget('/');
+
  }
 
   return (
@@ -73,7 +78,7 @@ console.log(result);
             {error && !company &&   <p className="waringmessage">Enter valid company</p>}
           </Col>
           <Col>
-            <Button className="w-25" onClick={addProduct}>
+            <Button className="w-25" color="primary" onClick={addProduct}>
               Add Product
             </Button>
           </Col>

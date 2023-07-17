@@ -7,13 +7,22 @@ import PrivateComponent from "./component/PrivateComponent";
 import LoginComponent from "./component/LoginComponent";
 import AddProduct from "./component/AddProduct";
 import ProductList from "./component/ProductList";
+import { Input } from "reactstrap";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Nav />
-        <h3> E-Commorce Dashbord</h3>
+        <div >
+          <h3 className="headername d-flex"  > E-Commorce Dashbord
+          <Input className="w-50 m-2" type="text" placeholder="Search" />
+        </h3>
+       
+
+        </div>
+
+        
         <Routes>
           <Route element={<PrivateComponent />}>
             <Route path="/" element={<h1>Home Page</h1>} />

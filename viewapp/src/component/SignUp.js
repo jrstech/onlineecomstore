@@ -6,6 +6,7 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
 
   const naviaget = useNavigate();
 
@@ -18,6 +19,10 @@ const Signup = () => {
 
   const collectData = async () => {
     console.log(name, email, password);
+    if(!name || !email || !password){
+      setError(true);
+      return false;
+    }
     let result = await fetch("http://localhost:5000/register", {
       method: "post",
       body: JSON.stringify({ name, email, password }),
@@ -45,6 +50,7 @@ const Signup = () => {
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter Name"
           />
+          { error && !name && <p className="waringmessage">Please enter name</p>}
         </div>
         <div>
           <Input
@@ -54,6 +60,7 @@ const Signup = () => {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
           />
+          { error && !email && <p className="waringmessage">Please Enter email id</p>}
         </div>
         <div>
           <Input
@@ -63,6 +70,7 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
           />
+           { error && !password && <p className="waringmessage">please enter password</p>}
         </div>
         <div>
           <Button
