@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Button } from 'reactstrap'
+import { Link } from 'react-router-dom'
+import { Button, Input } from 'reactstrap'
 
 const ProductList = () => {
 const [product, setProduct] = useState([])
@@ -17,17 +18,31 @@ useEffect(() => {
 const deleteProduct = async (id) => {
 let result = await fetch(`http://localhost:5000/product/${id}`,{
   method: 'delete'
-
 })
 result =  await result.json()
 if(result){
   getProduct();
 }
 }
-
+const searchHandle = async (e) => {
+  let key = e.target.value;
+  if(key){
+    let results = await fetch(`http://localhost:5000/search/${key}`);
+  results = await results.json();
+  if(results){
+   setProduct(results)
+  }
+  }else{
+    getProduct();
+  }
+ }
+ 
   return (
     <div >
+        
       <h4>Product List</h4>
+      <Input className="w-25 mx-5 m-3" type="text" placeholder="Search Product" 
+          onChange={searchHandle}/>
       <div className='pruductlist'>
 
       <tr>
@@ -40,17 +55,19 @@ if(result){
       </tr>
     
     {
-      product.map((item, index)=> 
+      product.length>0?product.map((item, index)=> 
         <tr key={item._id}>
           <th>{index+1}</th>
           <th>{item.name}</th>
           <th> $ {item.price}</th>
           <th>{item.category}</th>
           <th>{item.company}</th>
-          <th><Button color='danger' onClick={()=>deleteProduct(item._id)}>Delete</Button></th>
+          <th><Button color='danger' className='mx-2' onClick={()=>deleteProduct(item._id)}>Delete</Button>
+          <Link to={"/update/"+item._id} className='navlinkupdate'>Update</Link></th>
         </tr>
       )
-
+:
+    <h4 className='m-4'>No result Found</h4>
     }
       </div>
     </div>

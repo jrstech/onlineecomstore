@@ -1,3 +1,9 @@
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .navlink {
  
   background-color:skyblue;
@@ -13,10 +19,8 @@
  
  }
  .footercomponent{
-  position: absolute;
-  bottom: 0;
+  margin: 1%;
   text-align: center;
-  width: 100%;
   background-color: skyblue;
 
  }
@@ -34,6 +38,7 @@
  .textset{
   justify-content: end;
  }
+
  .logo{
   margin: 2px;
  border-radius: 50%;
@@ -81,4 +86,15 @@ text-align: center;
  .logoutstyle{
   position: absolute;
   right: 0;
+ }
+
+ .navlinkupdate{
+  text-decoration: none;
+  font-weight: bold;
+  padding: 6px;
+  text-align: center;
+  margin: 5px;
+  background-color: rgb(235, 188, 18);
+  border-radius: 5px;
+  color: #fff;
  }

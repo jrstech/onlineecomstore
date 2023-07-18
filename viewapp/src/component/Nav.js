@@ -39,17 +39,23 @@ const Nav = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink className="navlinkstyle" to="/studentregistration">
+              {" "}
+             Student Registration
+            </NavLink>
+          </li>
+          {/* <li>
             <NavLink className="navlinkstyle" to="/update">
               {" "}
               Update Product
             </NavLink>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <NavLink className="navlinkstyle" to="/profile">
               {" "}
               Profile Component
             </NavLink>
-          </li>
+          </li> */}
           <li className="logoutstyle">
             <NavLink
               className="navlinkstyle "
@@ -58,7 +64,7 @@ const Nav = () => {
               to="/signup"
             >
               {" "}
-              User: &nbsp; {JSON.parse(auth).name} &nbsp;  Logout 
+              User: &nbsp; {JSON.parse(auth).name} &nbsp; Logout
             </NavLink>{" "}
           </li>
         </ul>

@@ -18,8 +18,8 @@ const Signup = () => {
   }, []);
 
   const collectData = async () => {
-    console.log(name, email, password);
-    if(!name || !email || !password){
+    // console.log(name, email, password);
+    if (!name || !email || !password) {
       setError(true);
       return false;
     }
@@ -50,7 +50,7 @@ const Signup = () => {
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter Name"
           />
-          { error && !name && <p className="waringmessage">Please enter name</p>}
+          {error && !name && <p className="waringmessage">Please enter name</p>}
         </div>
         <div>
           <Input
@@ -60,7 +60,9 @@ const Signup = () => {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
           />
-          { error && !email && <p className="waringmessage">Please Enter email id</p>}
+          {error && !email && (
+            <p className="waringmessage">Please Enter email id</p>
+          )}
         </div>
         <div>
           <Input
@@ -70,7 +72,9 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
           />
-           { error && !password && <p className="waringmessage">please enter password</p>}
+          {error && !password && (
+            <p className="waringmessage">please enter password</p>
+          )}
         </div>
         <div>
           <Button
