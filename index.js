@@ -2,6 +2,7 @@ const express = require("express");
 const connectDB = require("./database/config");
 const User = require("./database/User");
 const Product = require("./database/Product");
+const Student = require("./database/Students")
 
 const cors = require("cors"); // cores api problem
 const app = express();
@@ -15,6 +16,15 @@ app.use(cors()); // cors middelware
 app.post("/register", async (req, resp) => {
   let user = new User(req.body);
   let result = await user.save();
+  result = result.toObject();
+  delete result.password;
+  resp.send(result);
+});
+
+// student registration  ============================
+app.post("/studentregistration", async (req, resp) => {
+  let student = new Student(req.body);
+  let result = await student.save();
   result = result.toObject();
   delete result.password;
   resp.send(result);
@@ -48,9 +58,18 @@ app.get("/productlist", async (req, resp) => {
   if (products.length > 0) {
     resp.send(products);
   } else {
-    resp.send({ result: "No Products Found" });
+    resp.send({result: "No Products Found" });
   }
 });
+// student list fetch from the database =============================================
+app.get("/studentlist", async (req, resp) => {
+  let students = await Student.find();
+  if(students.length > 0) {
+    resp.send(students);
+  } else {
+    resp.send({result: "No Student Found"})
+  }
+})
 
 // deleted api =============
 
