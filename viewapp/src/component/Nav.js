@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, json, useNavigate, NavLink } from "react-router-dom";
+import {  useNavigate, NavLink } from "react-router-dom";
 
 const Nav = () => {
   const naviagte = useNavigate();
@@ -33,6 +33,12 @@ const Nav = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink className="navlinkstyle" to="/studentlist">
+              {" "}
+              Student List
+            </NavLink>
+          </li>
+          <li>
             <NavLink className="navlinkstyle" to="/addproductlisting">
               {" "}
               Add Product
@@ -44,12 +50,7 @@ const Nav = () => {
              Student Registration
             </NavLink>
           </li>
-          {/* <li>
-            <NavLink className="navlinkstyle" to="/update">
-              {" "}
-              Update Product
-            </NavLink>
-          </li> */}
+         
           {/* <li>
             <NavLink className="navlinkstyle" to="/profile">
               {" "}

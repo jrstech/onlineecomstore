@@ -40,10 +40,10 @@ const searchHandle = async (e) => {
   return (
     <div >
         
-      <h4>Product List</h4>
+      <h4 className='m-4'>Product List</h4>
       <Input className="w-25 mx-5 m-3" type="text" placeholder="Search Product" 
           onChange={searchHandle}/>
-      <div className='pruductlist'>
+      <div className='pruductlist m-5'>
 
       <tr>
         <th>Sr.No </th>
