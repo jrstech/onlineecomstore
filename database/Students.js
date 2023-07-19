@@ -9,6 +9,8 @@ const studentSchema = new mongoose.Schema({
     gender: Boolean,
     state: String,
     district: String,
+    block: String,
+    town: String,
     pin: Number
     // profilephoto: String,
     // highschoolmarksheet: String,

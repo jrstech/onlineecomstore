@@ -8,7 +8,7 @@ const getStudent = async() => {
   let result = await fetch('http://localhost:5000/studentlist')
   result = await result.json();
   setStudent(result);
-  console.log(result);
+  // console.log(result);
 }
 
 useEffect(() => {
