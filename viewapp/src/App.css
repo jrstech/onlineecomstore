@@ -114,7 +114,14 @@ text-align: center;
   margin: 1%;
   background-color: aqua;
  }
-
+.student-form-style{
+  padding: 5%;
+  padding-right: 5%;
+  background-color: rgb(179, 215, 117);
+  
+ 
+  border: 2px solid red;
+}
 
 
  
