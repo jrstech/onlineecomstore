@@ -10,6 +10,7 @@ import ProductList from "./component/ProductList";
 import UpdateProduct from "./component/UpdateProduct";
 import RegisterationForm from "./component/RegisterationForm";
 import StudentList from "./component/StudentList";
+import Home from "./component/Home";
 
 function App() {
   return (
@@ -19,14 +20,17 @@ function App() {
         <div>
           <h3 className="headername ">JRS Computers Institute & IT solution</h3>
         </div>
+        <div></div>
         <Routes>
           <Route element={<PrivateComponent />}>
-            <Route path="/" element={<h1>Home Page</h1>} />
-            <Route path="/addproductlisting" element={<AddProduct />} />
+            <Route path="/" element={<Home/>} />
+            <Route path="/addproduct" element={<AddProduct />} />
             <Route path="/productlist" element={<ProductList />} />
             <Route path="/update/:id" element={<UpdateProduct />} />
             <Route path="/studentlist" element={<StudentList/>} />
             <Route path="/logout" element={<h1>Logout Component</h1>} />
+            
+
             <Route
               path="/studentregistration"
               element={<RegisterationForm />}

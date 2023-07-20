@@ -7,7 +7,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.navlink {
+.top-navlink {
  
   background-color:skyblue;
   width: 100%;
@@ -123,5 +123,8 @@ text-align: center;
   border: 2px solid red;
 }
 
-
+.table-header{
+  color: red;
+  font-size: 1.1rem;
  
+}

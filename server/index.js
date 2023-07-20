@@ -23,6 +23,7 @@ app.post("/register", async (req, resp) => {
 
 // student registration  ============================
 app.post("/studentregistration", async (req, resp) => {
+  // console.log(req.body)
   let student = new Student(req.body);
   let result = await student.save();
   result = result.toObject();
@@ -32,7 +33,7 @@ app.post("/studentregistration", async (req, resp) => {
 
 //  login api development here fetch from databse ================================
 app.post("/login", async (req, resp) => {
-  console.log(req.body);
+  // console.log(req.body);
   if (req.body.password && req.body.email) {
     let user = await User.findOne(req.body).select("-password");
     if (user) {
@@ -46,7 +47,7 @@ app.post("/login", async (req, resp) => {
 });
 
 // product linsting api ========================
-app.post("/addproductlisting", async (req, resp) => {
+app.post("/addproduct", async (req, resp) => {
   let product = new Product(req.body);
   let result = await product.save();
   resp.send(result);
@@ -64,6 +65,7 @@ app.get("/productlist", async (req, resp) => {
 // student list fetch from the database =============================================
 app.get("/studentlist", async (req, resp) => {
   let students = await Student.find();
+  // console.log("this is fetch result", students)
   if(students.length > 0) {
     resp.send(students);
   } else {
