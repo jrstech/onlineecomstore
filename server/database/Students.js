@@ -6,7 +6,7 @@ const studentSchema = new mongoose.Schema({
     mothername: String,
     mobilenumber: Number,
     // dob: Date,
-    gender: Boolean,
+    gender: String,
     state: String,
     district: String,
     block: String,

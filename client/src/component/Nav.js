@@ -11,7 +11,7 @@ const Nav = () => {
   return (
     <div className="d-flex">
       {auth ? (
-        <ul className="navlink d-flex">
+        <ul className="top-navlink d-flex m-2">
           <>
             {" "}
             <img
@@ -22,7 +22,7 @@ const Nav = () => {
           </>
 
           <li>
-            <NavLink className="navlinkstyle mx-2" to="">
+            <NavLink className="navlinkstyle mx-2" to="/">
               Home{" "}
             </NavLink>
           </li>
@@ -39,7 +39,7 @@ const Nav = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink className="navlinkstyle" to="/addproductlisting">
+            <NavLink className="navlinkstyle" to="/addproduct">
               {" "}
               Add Product
             </NavLink>

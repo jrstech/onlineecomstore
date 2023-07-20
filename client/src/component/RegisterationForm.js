@@ -12,6 +12,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
+import { Country, State, City } from "country-state-city";
 
 const RegisterationForm = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -20,7 +21,7 @@ const RegisterationForm = () => {
   const [mothername, setMothername] = useState("");
   const [mobilenumber, setMobilenumber] = useState("");
   // const [dob, setDob] = useState("")
-  const [gender, setGender] = useState(true);
+  const [gender, setGender] = useState("");
   const [state, setState] = useState("");
   const [district, setDistrict] = useState("");
   const [block, setBlock] = useState("");
@@ -29,7 +30,8 @@ const RegisterationForm = () => {
   // const [profilephoto, setProfilephoto] = useState()
   // const [highschoolmarksheet, setHighschoolmarksheet] = useState()
   // const [intermediatemarksheet, setIntermediatemarksheet] = useState()
-  // const [check, setCheck] = useState(false)
+  const [check, setCheck] = useState(false);
+  const [error, setError] = useState(false);
 
   let navigate = useNavigate();
 
@@ -37,6 +39,20 @@ const RegisterationForm = () => {
     setDropdownOpen(!dropdownOpen);
   };
   const studentInformationStore = async () => {
+    if (
+      !fullname ||
+      !fathername ||
+      !mothername ||
+      !mobilenumber ||
+      !state ||
+      !district ||
+      !block ||
+      !town
+      
+    ) {
+      setError(true);
+      return false;
+    }
     let result = await fetch("http://localhost:5000/studentregistration", {
       method: "post",
       body: JSON.stringify({
@@ -60,6 +76,24 @@ const RegisterationForm = () => {
     if (result) {
       navigate("/");
     }
+  };
+
+  // reset filed =============================================
+  const resetForm = () => {
+    setDropdownOpen(false);
+    setFullname("");
+    setFathername("");
+    setMothername("");
+    setMobilenumber("");
+    // setDob(""); // this if you want to reset the Date of Birth field
+    setGender(true);
+    setState("");
+    setDistrict("");
+    setBlock("");
+    setTown("");
+    setPin("");
+    setCheck(false);
+    setError(false);
   };
 
   return (
@@ -91,6 +125,9 @@ const RegisterationForm = () => {
               onChange={(e) => setFullname(e.target.value)}
               placeholder="Enter Full Name"
             />
+            {error && !fullname && (
+              <p className="waringmessage m-2">Monetary field</p>
+            )}
           </FormGroup>
         </div>
         <div>
@@ -105,6 +142,9 @@ const RegisterationForm = () => {
               onChange={(e) => setFathername(e.target.value)}
               placeholder="Enter Father Name"
             />
+            {error && !fathername && (
+              <p className="waringmessage m-2">Monetary field</p>
+            )}
           </FormGroup>
           <FormGroup>
             <Label for="mothername">Mother Name</Label>
@@ -117,6 +157,9 @@ const RegisterationForm = () => {
               onChange={(e) => setMothername(e.target.value)}
               placeholder="Enter Mother Name"
             />
+            {error && !mothername && (
+              <p className="waringmessage m-2">Monetary field</p>
+            )}
           </FormGroup>
         </div>
         <div>
@@ -131,6 +174,9 @@ const RegisterationForm = () => {
               onChange={(e) => setMobilenumber(e.target.value)}
               placeholder="Enter Mobile Number"
             />
+            {error && !mobilenumber && (
+              <p className="waringmessage m-2">Monetary field</p>
+            )}
           </FormGroup>
         </div>
         <div>
@@ -140,76 +186,69 @@ const RegisterationForm = () => {
           </FormGroup>
         </div>
         <div className="d-flex gap-5">
-          <FormGroup check>
-            <Label check>
-              <Input
-                type="radio"
-                name="gender"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-              />{" "}
-              Male
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input
-                type="radio"
-                name="gender"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-              />{" "}
-              Female
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input
-                type="radio"
-                name="gender"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-              />{" "}
-              Transgender
-            </Label>
+         
+          <FormGroup>
+          <Label htmlFor="gender">Select Gender</Label>
+          <Input
+            className="w-100"
+            type="select"
+            name="gender"
+            id="gender"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+          >
+            <option>-Select Gender-</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Transgender</option>
+            </Input>
           </FormGroup>
         </div>
         <FormGroup>
-          <Label for="state">Select State</Label>
+          <Label htmlFor="state">Select State</Label>
           <Input
             className="w-100"
-            type="text"
+            type="select"
             name="state"
             id="state"
             value={state}
             onChange={(e) => setState(e.target.value)}
           >
-            {/* <option>Uttar Pradesh</option>
+            <option>-Select State-</option>
+            <option>Uttar Pradesh</option>
             <option>Madhya Pradesh</option>
             <option>Maharastra</option>
             <option>Uttarakhand</option>
-            <option>Bihar</option> */}
+            <option>Bihar</option>
           </Input>
+          {error && !state && (
+            <p className="waringmessage m-2">Monetary field</p>
+          )}
         </FormGroup>
         <FormGroup>
-          <Label for="district">Select District</Label>
+          <Label htmlFor="district">Select District</Label>
           <Input
             className="w-100"
-            type="text"
+            type="select"
             name="district"
             id="district"
             value={district}
             onChange={(e) => setDistrict(e.target.value)}
           >
-            {/* <option>Raebareli</option>
+            <option>-Select District-</option>
+            <option>Raebareli</option>
             <option>Kanpur</option>
             <option>Lucknow</option>
             <option>Lakhimpur Khiri</option>
-            <option>Basti</option> */}
+            <option>Basti</option>
           </Input>
+          {error && !district && (
+            <p className="waringmessage m-2">Monetary field</p>
+          )}
         </FormGroup>
+        {console.log(typeof district)}
         <FormGroup>
-          <Label for="block">Sub-District/Block</Label>
+          <Label htmlFor="block">Sub-District/Block</Label>
           <Input
             className="w-100"
             type="text"
@@ -219,9 +258,12 @@ const RegisterationForm = () => {
             onChange={(e) => setBlock(e.target.value)}
             placeholder="Enter Sub-district or block"
           />
+          {error && !block && (
+            <p className="waringmessage m-2">Monetary field</p>
+          )}
         </FormGroup>
         <FormGroup>
-          <Label for="town">Town/Village</Label>
+          <Label htmlFor="town">Town/Village</Label>
           <Input
             className="w-100"
             type="text"
@@ -233,7 +275,7 @@ const RegisterationForm = () => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="pin">Pin Code</Label>
+          <Label htmlFor="pin">Pin Code</Label>
           <Input
             className="w-100"
             type="number"
@@ -244,8 +286,13 @@ const RegisterationForm = () => {
             placeholder="Enter Pin Code"
           />
         </FormGroup>
-        <FormGroup className="d-flex justify-content-between w-100 gap-5">
+        <FormGroup>
           <Label className="mt-2" for="profilephoto">
+            Select Course
+          </Label>
+        </FormGroup>
+        <FormGroup className="d-flex justify-content-between w-100 gap-5">
+          <Label className="mt-2" htmlFor="profilephoto">
             Profile Picture
           </Label>
           <div>
@@ -260,11 +307,12 @@ const RegisterationForm = () => {
             <Button className="">Upload</Button>
           </div>
         </FormGroup>{" "}
-        <FormText  color="muted">
-          Profile picture upload only png/jpeg format (Min size 15kb), (Max size 50kb).
+        <FormText color="muted">
+          Profile picture upload only png/jpeg format (Min size 15kb), (Max size
+          50kb).
         </FormText>
         <FormGroup className="d-flex gap-5 justify-content-between w-100 align-items-center">
-          <Label className="mt-2 " for="highschoolmarksheet">
+          <Label className="mt-2 " htmlFor="highschoolmarksheet">
             10<sup>th</sup> Marksheet
           </Label>
           <div>
@@ -279,13 +327,12 @@ const RegisterationForm = () => {
             <Button>Upload</Button>
           </div>
         </FormGroup>
-        <FormText  color="muted">
-        Marksheet upload only PDF format (Min size 200kb), (Max size 1MB).
+        <FormText color="muted">
+          Marksheet upload only PDF format (Min size 200kb), (Max size 1MB).
         </FormText>
         <FormGroup className="d-flex justify-content-between w-100 align-items-center gap-5">
-         
-          <Label className="mt-2 " for="intermediatemarksheet">
-          12<sup>th</sup> Marksheet
+          <Label className="mt-2 " htmlFor="intermediatemarksheet">
+            12<sup>th</sup> Marksheet
           </Label>
           <div>
             <Input
@@ -303,27 +350,24 @@ const RegisterationForm = () => {
           Marksheet upload only PDF format (Min size 200kb),(Max size 1MB).
         </FormText>
         <FormGroup check>
-          <Label check>
-            <Input type="checkbox" name="check" /> Agree
+          <Label htmlFor="check" check>
+            {" "}
+            Agree{" "}
           </Label>
+          <Input type="checkbox" name="check" />
         </FormGroup>
         <FormGroup>
-
-        <Button
-          onClick={studentInformationStore}
-          type="button"
-          color="primary m-2 w-25"
+          <Button
+            onClick={studentInformationStore}
+            type="button"
+            color="primary m-2 w-25"
           >
-          Submit
-        </Button>
-        <Button
-         
-          type="rest"
-          color="primary m-2 w-25"
-          >
-          Reset
-        </Button>
-            </FormGroup>
+            Submit
+          </Button>
+          <Button type="reset" color="primary m-2 w-25" onClick={resetForm}>
+            Reset
+          </Button>
+        </FormGroup>
       </Form>
     </div>
   );

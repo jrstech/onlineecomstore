@@ -19,7 +19,7 @@ useEffect(() => {
     <div >
       <h2 className='m-4'>Student List</h2>
       <div className='m-5 studentlist'>
-      <tr>
+      <tr className='table-header'>
         <th className='p-2'>Sr.No </th>
         <th className='p-2'>Student Name </th>
         <th className='p-2'>Father Name </th>
@@ -46,7 +46,7 @@ useEffect(() => {
           <th>{item.district}</th>
           <th>{item.block}</th>
           <th>{item.town}</th>
-          <th>{item.pin}</th>
+          <th className='p-1'>{item.pin}</th>
 
         </tr>
       )
