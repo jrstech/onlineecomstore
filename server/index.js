@@ -104,13 +104,24 @@ app.get("/search/:key", async (req, resp) => {
   const result = await Product.find({
     $or: [
       { name: { $regex: req.params.key } },
-      { price: { $regex: req.params.key } },
       { category: { $regex: req.params.key } },
-      { company: { $regex: req.params.key } },
-    ],
+      { company: { $regex: req.params.key } }
+    ]
   });
   resp.send(result);
 });
+
+//search by name api developed here
+app.get("/studentsearch/:key", async (req, resp) => {
+  const result = await  Student.find({
+    $or: [
+      {fullname: {$regex: req.params.key}},
+      {fathername: {$regex: req.params.key}},
+      {mothername: {$regex: req.params.key}}
+    ]
+  });
+  resp.send(result)
+})
 
 app.listen(PORT, () => {
   connectDB(); // Connect to the database

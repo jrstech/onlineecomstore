@@ -24,6 +24,7 @@ if(result){
   getProduct();
 }
 }
+// search product function here ============
 const searchHandle = async (e) => {
   let key = e.target.value;
   if(key){
@@ -36,6 +37,7 @@ const searchHandle = async (e) => {
     getProduct();
   }
  }
+ 
  
   return (
     <div >

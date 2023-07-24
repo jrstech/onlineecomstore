@@ -14,11 +14,13 @@ const Nav = () => {
         <ul className="top-navlink d-flex m-2">
           <>
             {" "}
+            <NavLink to="/">
             <img
               className="logo"
               src="https://static.vecteezy.com/system/resources/previews/009/027/322/original/jrs-logo-jrs-letter-jrs-letter-logo-design-initials-jrs-logo-linked-with-circle-and-uppercase-monogram-logo-jrs-typography-for-technology-business-and-real-estate-brand-vector.jpg"
               alt="loading"
-            />
+              />
+              </NavLink>
           </>
 
           <li>
@@ -70,7 +72,7 @@ const Nav = () => {
           </li>
         </ul>
       ) : (
-        <ul className="navlink textset">
+        <ul className="navlink textset ">
           <li className="">
             <NavLink className="navlinkstyle" to="/signup">
               {" "}
